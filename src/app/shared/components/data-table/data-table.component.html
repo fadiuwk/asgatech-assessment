@@ -1,0 +1,88 @@
+<p-table
+  [columns]="dataTableService.cols()"
+  [value]="dataTableService.rows()"
+  [lazy]="true"
+  [resizableColumns]="true"
+  styleClass="p-datatable-gridlines"
+  [tableStyle]="{ 'min-height': 'auto' }"
+  [first]="dataTableService.page"
+  [rows]="dataTableService.pagePerCount"
+>
+  <!--start header  -->
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of dataTableService.cols()">
+        {{ col.header }}
+      </th>
+      <th *ngIf="dataTableService.hasListActions"></th>
+    </tr>
+  </ng-template>
+  <!--end header  -->
+
+  <!--start body  -->
+  <ng-template
+    pTemplate="body"
+    let-rowData
+    let-columns="columns"
+    let-i="rowIndex"
+  >
+    <tr
+      [ngStyle]="{
+        'background-color':
+          rowData.AvailablePieces < 5 && dataTableService.showStyleHighlight
+            ? '#ffff0052'
+            : '#fff'
+      }"
+      *ngIf="!dataTableService.isLoading"
+      class="tr-body"
+    >
+      <td *ngFor="let col of dataTableService.cols()">
+        <ng-container [ngSwitch]="col.type">
+          <ng-container *ngSwitchCase="'date'">
+            {{ rowData[col.field] | date }}
+          </ng-container>
+          <ng-container *ngSwitchCase="'hasImage'">
+            <cell-has-image [field]="col" [row]="rowData"></cell-has-image>
+          </ng-container>
+          <ng-container *ngSwitchCase="'currency'">
+            {{ rowData[col.field] }} EGP
+          </ng-container>
+          <ng-container *ngSwitchCase="'input-editable'">
+            <cell-editable [field]="col" [row]="rowData"></cell-editable>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <div [ngClass]="col.classes" [title]="rowData[col.field]">
+              {{ rowData[col.field] }}
+            </div>
+          </ng-container>
+        </ng-container>
+      </td>
+      <td *ngIf="dataTableService.hasListActions">
+        <cell-list-actions [row]="rowData"></cell-list-actions>
+      </td>
+    </tr>
+
+    <tr *ngIf="dataTableService.isLoading" class="tr-body">
+      <td *ngFor="let col of dataTableService.cols(); let even = even">
+        <p-skeleton></p-skeleton>
+      </td>
+      <td></td>
+    </tr>
+  </ng-template>
+  <!--end body  -->
+</p-table>
+
+<!-- start paginator  -->
+<div
+  *ngIf="dataTableService.hasPaginator"
+  class="gloal-pagination flex justify-content-center bg-white"
+>
+  <p-paginator
+    (onPageChange)="dataTableService.emitOnPageChange($event)"
+    [first]="dataTableService.page"
+    [rows]="dataTableService.pagePerCount"
+    [totalRecords]="dataTableService.totalRecords"
+    [rowsPerPageOptions]="dataTableService.rowsPerPageOptions"
+  ></p-paginator>
+</div>
+<!-- end paginator  -->
