@@ -1,0 +1,10 @@
+<td [pEditableColumn]="row[field.field]" [pEditableColumnField]="field.field">
+    <p-cellEditor>
+        <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="row[field.field]" />
+        </ng-template>
+        <ng-template pTemplate="output">
+            {{ row[field.field] }}
+        </ng-template>
+    </p-cellEditor>
+</td>

@@ -1,0 +1,8 @@
+<div class="d-flex align-items-center">
+  <img
+    [src]="field.fieldImg ? row[field.fieldImg] : 'https://placehold.co/32x32'"
+    [alt]="row[field.field]"
+    class="avatar"
+  />
+  {{ row[field.field] }}
+</div>
