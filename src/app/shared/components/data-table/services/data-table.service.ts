@@ -7,8 +7,7 @@ import { Action } from '../models/action';
   providedIn: 'root',
 })
 export class DataTableService {
-
-  showStyleHighlight = false
+  showStyleHighlight = false;
 
   private pageChangedSubject$ = new Subject<any>();
   pageChangedSubject = signal<any>({});
@@ -46,4 +45,10 @@ export class DataTableService {
   getPageChanged() {
     return this.pageChangedSubject$.asObservable();
   }
+
+  //handle actions for single row
+  executeAction(func: (data: any) => void, data: any) {
+    func(data);
+  }
+  
 }

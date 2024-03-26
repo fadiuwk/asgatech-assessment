@@ -71,4 +71,8 @@ export class ProductListComponent implements OnInit {
         .filter((product) => product.AvailablePieces)
     );
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
