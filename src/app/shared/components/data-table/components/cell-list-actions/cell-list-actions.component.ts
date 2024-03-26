@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataTableService } from '../../services/data-table.service';
 
 @Component({
   selector: 'cell-list-actions',
@@ -11,4 +12,5 @@ import { CommonModule } from '@angular/common';
 export class CellListActionsComponent {
   @Input({required:true}) row !: any;
 
+  constructor(public dataTableService:DataTableService){}
 }

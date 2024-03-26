@@ -1,1 +1,18 @@
-<p>cell-list-actions works!</p>
+<div class="d-flex px-2">
+    <a
+    
+      style="cursor: pointer; width: fit-content"
+      class="dropdown-item me-2 p-2 rounded"
+      (click)="dataTableService.executeAction(action.function, row)"
+      *ngFor="let action of dataTableService.actionsList"
+      
+      [ngClass]="action.classes"
+    >
+      <span
+        class="mx-2"
+      >
+        {{ action.label }}</span
+      >
+    </a>
+  </div>
+  
