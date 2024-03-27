@@ -1,0 +1,50 @@
+<div class="order-details">
+  <div class="row">
+    <div class="col-lg-5 col-md-6">
+      <div class="rounded p-2">
+        <div class="inner">
+          <h4>Order Id : # {{ order.OrderId }}</h4>
+          <h4>Order Date : {{ order.OrderDate | date }}</h4>
+          <h4>Payment Type : {{ order.PaymentType }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-lg-8 col-md-6">
+      <div class="inner">
+        <data-table></data-table>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 rounded">
+      <div class="inner">
+        <h4>Customer Info</h4>
+        <h6>
+          Name :
+          <span class="text-muted">
+            {{ userInfo.Name }}
+          </span>
+        </h6>
+        <h6>
+          Email :
+          <span class="text-muted">
+            {{ userInfo.Email }}
+          </span>
+        </h6>
+        <h6>
+          Phone :
+          <span class="text-muted">
+            {{ userInfo.Phone }}
+          </span>
+        </h6>
+        <h6>
+          Address :
+          <span class="text-muted">
+            {{ userInfo.Address }}
+          </span>
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>

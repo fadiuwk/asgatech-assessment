@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataTableComponent } from 'src/app/shared/components/data-table/data-table.component';
 import { DataTableService } from 'src/app/shared/components/data-table/services/data-table.service';
@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
   imports: [CommonModule, DataTableComponent],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
+
 })
 export class ProductListComponent implements OnInit {
   subscription = new Subscription();

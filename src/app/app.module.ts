@@ -8,6 +8,7 @@ import { productsDataInitializer } from './core/app-initializers/products-data.f
 import { usersDataInitializer } from './core/app-initializers/users-data.function';
 import { ordersDataInitializer } from './core/app-initializers/orders-data.function';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './core/components/header/header.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule,
+    HeaderComponent
   ],
   providers: [
     {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { APP_INITIALIZER, ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataTableComponent } from 'src/app/shared/components/data-table/data-table.component';
 import { Subscription } from 'rxjs';
@@ -7,14 +7,17 @@ import { DataTableService } from 'src/app/shared/components/data-table/services/
 import { OrdersService } from '../../services/orders.service';
 import { ProductsService } from 'src/app/features/Products/services/products.service';
 import { Action } from 'src/app/shared/components/data-table/models/action';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ordersDataInitializer } from 'src/app/core/app-initializers/orders-data.function';
 
 @Component({
   selector: 'app-order-list',
   standalone: true,
-  imports: [CommonModule, DataTableComponent],
+  imports: [CommonModule, DataTableComponent , RouterModule],
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
+
 })
 export class OrderListComponent {
   subscription = new Subscription();
@@ -106,7 +109,6 @@ export class OrderListComponent {
   }
 
   previewOrder(data: any) {
-    console.log('data', data);
     this.route.navigate(['orders' , data.OrderId])
   }
 
