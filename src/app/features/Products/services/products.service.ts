@@ -25,4 +25,8 @@ export class ProductsService {
         });
     });
   }
+
+  getProductDetails(productId: number) {
+    return this.products().filter((item) => item.ProductId == productId);
+  }
 }

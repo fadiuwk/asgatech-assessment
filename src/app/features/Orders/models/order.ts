@@ -2,6 +2,6 @@ export interface Order {
     OrderId:number;
     OrderDate:string;
     UserId:string;
-    Products:[];
+    Products:any[];
     PaymentType:string;
 }

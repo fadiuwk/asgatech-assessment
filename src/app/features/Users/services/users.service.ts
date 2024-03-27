@@ -25,4 +25,8 @@ export class UsersService {
         });
     });
   }
+
+  getUserDetails(userId: string) {
+    return this.users().filter((item) => item.Id == userId);
+  }
 }

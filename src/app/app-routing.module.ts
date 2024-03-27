@@ -18,6 +18,13 @@ const routes: Routes = [
       ).then((c) => c.OrderListComponent),
   },
   {
+    path: 'orders/add',
+    loadComponent: () =>
+      import(
+        'src/app/features/Orders/components/create-order/create-order.component'
+      ).then((c) => c.CreateOrderComponent),
+  },
+  {
     path: 'orders/:id',
     loadComponent: () =>
       import(

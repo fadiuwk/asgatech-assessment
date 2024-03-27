@@ -1,0 +1,32 @@
+<div class="row">
+  <div  [ngClass]="{'col-md-12': !ordersService.cart().length}" class="col-md-9">
+    <div class="item">
+      <div class="row gy-3">
+        <div *ngFor="let product of productsService.products()" class="col-md-3">
+          <div class="item shadow rounded p-3">
+            <img
+              class="img-fluid"
+              [src]="product.ProductImg"
+              [alt]="product.ProductName"
+            />
+            <h4>{{ product.ProductName }}</h4>
+            <p class="text-muted">{{ product.ProductPrice }} EGP</p>
+            <button
+              (click)="onAddToCart(product)"
+              *ngIf="!product.selected"
+              class="btn btn-primary w-100"
+            >
+              Add To Cart
+            </button>
+            <button *ngIf="product.selected" class="btn btn-success w-100">
+              Added
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="ordersService.cart().length" class="col-md-3 border rounded p-2">
+    <app-cart-order></app-cart-order>
+  </div>
+</div>

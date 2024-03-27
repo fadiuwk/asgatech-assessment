@@ -4,4 +4,6 @@ export interface Product {
   ProductPrice: number;
   AvailablePieces: number;
   ProductImg: string;
+  selected?:boolean;
+  Quntity?:number
 }
